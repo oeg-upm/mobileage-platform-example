@@ -32,11 +32,11 @@ def hello():
 
     for equipamiento in equipamientos:
         #print("equipamiento = %s"%equipamiento)
-        print("equipamiento.keys() = %s"%equipamiento.keys())
+        #print("equipamiento.keys() = %s"%equipamiento.keys())
 
         if "horario" in equipamiento.keys():
             original_text = equipamiento["horario"]
-            print("original_text = %s"%original_text)
+            #print("original_text = %s"%original_text)
             target = 'en'
 
             if original_text in cache.keys():
@@ -66,13 +66,13 @@ def hello():
     new_file.write(cache_string)
 
 
-    return render_template('table_template.html', items=equipamientos)
+    return render_template('template.html', items=equipamientos)
 
 def load_json(filename):
     f = open(filename)
     f_text = f.read()
     j_text = json.loads(f_text)
-    print("j_text = %s"%j_text)
+    #print("j_text = %s"%j_text)
 
     return j_text
 

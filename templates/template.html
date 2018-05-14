@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmacies in Zaragoza</title>
+
+         <script type="text/javascript" src="maanalytics.js"></script>
+     <!-- Developer's custom code -->
+     <script >
+          // Initialise the MaAnalytics library
+          var maa = new MaAnalytics({
+              tid: "8289ee6e-67d1-4c84-b3ed-7a352f1de4a4"
+          });
+
+
+          function maTrack(){
+              alert("you are being tracked");
+              var CATEGORY = "routing to location";
+              var ACTION = "click";
+              var VALUE = 0;
+              var LABEL = "This can be used for supplemental information";
+              // Log an event to the MaAnalytics service
+              maa.trackEvent(CATEGORY, ACTION, VALUE, LABEL);
+          }
+     </script>
+
+</head>
+<body onload="maTrack()">
+
+List of pharmacies
+<table>
+    <tr >
+        <td>Name</td>
+        <td>Direction</td>
+        <td>Opening Hours (Original)</td>
+        <td>Opening Hours (English)</td>
+    </tr >
+
+    {% for item in items %}
+
+    <tr >
+        <td>{{ item["title"] }}</td>
+        <td>{{ item["calle"] }}</td>
+        <td>{{ item["horario"] }}</td>
+        <td>{{ item["opening_hours"] }}</td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+</body>
+</html>
