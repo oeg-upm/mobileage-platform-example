@@ -6,10 +6,14 @@ import json2html
 import os.path
 
 from google.cloud import translate
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from jinja2 import Template
 
 app = Flask(__name__)
+
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('js', path)
 
 
 @app.route("/")

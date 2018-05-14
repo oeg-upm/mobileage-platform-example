@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://analytics.scc-mobileage.lancs.ac.uk;">-->
+
+
     <title>Pharmacies in Zaragoza</title>
 
-         <script type="text/javascript" src="maanalytics.js"></script>
+         <script type="text/javascript" src="js/maanalytics.js"></script>
      <!-- Developer's custom code -->
      <script >
           // Initialise the MaAnalytics library
@@ -14,7 +17,7 @@
 
 
           function maTrack(){
-              alert("you are being tracked");
+              //alert("you are being tracked");
               var CATEGORY = "routing to location";
               var ACTION = "click";
               var VALUE = 0;
