@@ -31,27 +31,37 @@
 <body onload="maTrack()">
 
 List of pharmacies
-<table>
-    <tr >
-        <td>Name</td>
-        <td>Direction</td>
-        <td>Opening Hours (Original)</td>
-        <td>Opening Hours (English)</td>
-    </tr >
-
-    {% for item in items %}
-
-    <tr >
-        <td>{{ item["title"] }}</td>
-        <td>{{ item["calle"] }}</td>
-        <td>{{ item["horario"] }}</td>
-        <td>{{ item["opening_hours"] }}</td>
 
 
-    </tr>
-    {% endfor %}
+        <div id="uniqueid"> ... some html used if JS doesn't work ... </div>
 
-</table>
+		<script>
+			var options = {
+				 xhrMethod: 'GET',
+				 //xhrSource: 'http://83.212.100.226/ogd/datasets/data/venues/?format=json&page_size=15&dataset_id=27',
+				 xhrSource: 'http://127.0.0.1:5000/data/740data.json',
+				 //dataPath: 'results',
+				 dataPath: 'equipamiento',
+				templateListWrapper:
+				    '<table><thead>' +
+				    '<tr>' +
+				    '<th>Id</th>' +
+				    '<th>Name</th>' +
+				    '</tr></thead>' +
+				    '<tbody><%%></tbody>' +
+				    '</table>',
+				templateListItemWrapper:
+				    '<tr><%%></tr>',
+				templateListItem:
+					'<td><%id%></td>' +
+				    //'<td><%name%></td>' ,
+				    '<td><%title%></td>' ,
+				 debug: 'true'
+			 };
+			 new MobileAge.Component.List('uniqueid', options);
+	 </script>
+
+
 
 
 </body>
