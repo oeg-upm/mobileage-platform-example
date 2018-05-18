@@ -8,4 +8,4 @@
 
 `export GOOGLE_APPLICATION_CREDENTIALS=MyProject59450-275cd18ca4fe.json`
 
-`python main.py
+`python main.py`
