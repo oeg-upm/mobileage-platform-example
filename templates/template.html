@@ -5,6 +5,13 @@
         <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://analytics.scc-mobileage.lancs.ac.uk;">-->
 
 
+		  <link rel="stylesheet" href="http://mobileage.ftb-esv.de/frontend/assets/css/mobileage.min.css">
+		  <script src="http://mobileage.ftb-esv.de/frontend/assets/js/mobileage.min.js"></script>
+		  <style>
+		  td, th {	padding:1em; border: 1px solid black; }
+		  </style>
+
+
     <title>Pharmacies in Zaragoza</title>
 
          <script type="text/javascript" src="js/maanalytics.js"></script>
@@ -39,14 +46,19 @@ List of pharmacies
 			var options = {
 				 xhrMethod: 'GET',
 				 //xhrSource: 'http://83.212.100.226/ogd/datasets/data/venues/?format=json&page_size=15&dataset_id=27',
-				 xhrSource: 'http://127.0.0.1:5000/data/740data.json',
+				 //xhrSource: 'http://127.0.0.1:5000/data/740data.json',
+				 xhrSource: 'http://127.0.0.1:5000/data/740modified.json',
 				 //dataPath: 'results',
 				 dataPath: 'equipamiento',
 				templateListWrapper:
 				    '<table><thead>' +
 				    '<tr>' +
+
 				    '<th>Id</th>' +
 				    '<th>Name</th>' +
+				    '<th>Opening Hours (Spanish)</th>' +
+				    '<th>Opening Hours (English)</th>' +
+
 				    '</tr></thead>' +
 				    '<tbody><%%></tbody>' +
 				    '</table>',
@@ -54,8 +66,9 @@ List of pharmacies
 				    '<tr><%%></tr>',
 				templateListItem:
 					'<td><%id%></td>' +
-				    //'<td><%name%></td>' ,
-				    '<td><%title%></td>' ,
+				    '<td><%title%></td>' +
+				    '<td><%horario%></td>' +
+				    '<td><%opening_hours%></td>' ,
 				 debug: 'true'
 			 };
 			 new MobileAge.Component.List('uniqueid', options);
