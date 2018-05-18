@@ -27,7 +27,7 @@ def send_js(path):
 def hello():
     original_json_filename = "data/740.json"
     modified_json_filename = "data/740modified.json"
-    translation_cache_filename = "data/translation_cache.txt"
+    translation_cache_filename = "data/translation_cache.json"
 
 
     original_json = load_json(original_json_filename)

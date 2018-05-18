@@ -108,3 +108,6 @@ venv.bak/
 .mypy_cache/
 
 MyProject59450-275cd18ca4fe.json
+data/translation_cache.json
+
+.idea/
