@@ -1,6 +1,7 @@
 # mobileage-platform-example
+sudo apt-get update
 
-`sudo apt-get install python-pip`
+`sudo apt-get install python-pip python-dev`
 
 `pip install virtualenv`
 
