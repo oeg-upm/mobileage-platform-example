@@ -25,15 +25,25 @@ def send_js(path):
 
 @app.route("/")
 def hello():
-    jsonfile = "740.json"
-    j_text = load_json("740.json")
-    equipamientos = j_text["equipamiento"]
+    original_json_filename = "data/740.json"
+    modified_json_filename = "data/740modified.json"
+    translation_cache_filename = "data/translation_cache.txt"
+
+
+    original_json = load_json(original_json_filename)
+    equipamientos = original_json["equipamiento"]
     translate_client = translate.Client()
-    cache_filename = "cache.txt"
-    if os.path.isfile(cache_filename):
-        cache = load_json(cache_filename)
+
+    if os.path.isfile(translation_cache_filename):
+        cache = load_json(translation_cache_filename)
     else:
         cache = {}
+
+    if os.path.isfile(modified_json_filename):
+        modified_json = load_json(modified_json_filename)
+    else:
+        modified_json = {}
+
     for equipamiento in equipamientos:
         if "horario" in equipamiento.keys():
             original_text = equipamiento["horario"]
@@ -48,9 +58,16 @@ def hello():
                 print("using google service")
                 cache[original_text] = translation
             equipamiento["opening_hours"] = translation["translatedText"]
+
     cache_string = json.dumps(cache)
-    new_file = open("cache.txt", 'w')
+    new_file = open(translation_cache_filename, 'w')
     new_file.write(cache_string)
+
+    modified_json["equipamiento"] = equipamientos
+    modified_json_string = json.dumps(modified_json)
+    new_file = open(modified_json_filename, 'w')
+    new_file.write(modified_json_string)
+
     return render_template('template.html', items=equipamientos)
 
 def load_json(filename):
