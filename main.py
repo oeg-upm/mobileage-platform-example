@@ -80,5 +80,5 @@ def load_json(filename):
 if __name__ == '__main__':
     CORS(app)
     #app.run(debug=True)
-    app.run(port=6025, debug=True)
+    app.run(host='0.0.0.0', port=6025, debug=True)
 
